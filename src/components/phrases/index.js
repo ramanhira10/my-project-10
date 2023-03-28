@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Phrase from "../phrase";
 import './style.css';
 
 const Phrases = props => {
-    const { phrases } = props;
+    const { phrases, setIsWinner } = props;
 
     const getPhrases = () => {
         const getValidIndexRandomly = () => parseInt(Math.random() * 25, 10);
@@ -24,8 +24,6 @@ const Phrases = props => {
     };
 
     const phrasesToSend = getPhrases();
-
-    const [isWinner, setIsWinner] = useState(false);
 
     const winningPatterns = [
         [0, 1, 2, 3, 4], 
@@ -71,32 +69,22 @@ const Phrases = props => {
     };
 
     return (
-        <div>
+        <div className='grid-container'>
             {
-                isWinner ?
-                (
-                    <div>Hurray, Announce that you are a winner</div>
-                ) :
-                (
-                    <div className='grid-container'>
-                        {
-                            phrasesToSend &&
-                            phrasesToSend.length > 0 &&
-                            phrasesToSend.length < 26 &&
-                            phrasesToSend.map((phrase, index) => {
-                                const showPhrase = index !== 12 ? true : false;
-                                return (
-                                    <Phrase
-                                        phraseText={phrase}
-                                        key={index}
-                                        showPhrase={showPhrase}
-                                        checkForBingo={checkForBingo}
-                                    />
-                                );
-                            })
-                        }
-                    </div>
-                )
+                phrasesToSend &&
+                phrasesToSend.length > 0 &&
+                phrasesToSend.length < 26 &&
+                phrasesToSend.map((phrase, index) => {
+                    const showPhrase = index !== 12 ? true : false;
+                    return (
+                        <Phrase
+                            phraseText={phrase}
+                            key={index}
+                            showPhrase={showPhrase}
+                            checkForBingo={checkForBingo}
+                        />
+                    );
+                })
             }
         </div>
     );
