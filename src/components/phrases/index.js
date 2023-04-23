@@ -1,9 +1,12 @@
-import React from 'react';
+
+import React, { memo } from 'react';
 import Phrase from "../phrase";
 import './style.css';
 
 const Phrases = props => {
     const { phrases, setIsWinner } = props;
+
+    const MID_POSITION = 12;
 
     const getPhrases = () => {
         const getValidIndexRandomly = () => parseInt(Math.random() * 25, 10);
@@ -42,7 +45,7 @@ const Phrases = props => {
         [4, 8, 12, 16, 20]
     ];
 
-    const selectedIndexes = [12];
+    const selectedIndexes = [MID_POSITION];
 
     const checkForWinner = () => {
 
@@ -90,4 +93,4 @@ const Phrases = props => {
     );
 };
 
-export default Phrases;
+export default memo(Phrases);

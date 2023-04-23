@@ -2,12 +2,12 @@
     display: grid;
     grid-template-columns: 95px 95px 95px 95px 95px;
     grid-template-rows: auto;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 400px) {
     .grid-container {
         grid-template-columns: 75px 75px 75px 75px 75px;
-        font-size: 16px;
+        font-size: 14px;
     }
 }

@@ -1,4 +1,7 @@
 .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #000000;
     border-radius: 5px;
     margin: 1px;
@@ -6,6 +9,10 @@
     word-wrap: break-word;
     text-align: center;
     cursor: pointer;
+}
+
+.grid-item:hover {
+    background-color: #f3f3f3;
 }
 
 .grid-item.active{
