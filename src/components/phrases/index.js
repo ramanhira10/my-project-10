@@ -1,13 +1,20 @@
-
 import React, { memo } from 'react';
 import Phrase from "../phrase";
 import './style.css';
 
+/**
+ * Phrases is a container component for phrases collection
+ * @param {Object} props carries phrases and setIsWinner method reference to execute and set the winner state
+ */
 const Phrases = props => {
     const { phrases, setIsWinner } = props;
 
     const MID_POSITION = 12;
 
+    /**
+     * getPhrases method is used to generate the random phrases when called every time
+     * @returns the collection of phrases
+     */
     const getPhrases = () => {
         const getValidIndexRandomly = () => parseInt(Math.random() * 25, 10);
 
@@ -28,6 +35,9 @@ const Phrases = props => {
 
     const phrasesToSend = getPhrases();
 
+    /**
+     * Collection of Winning patterns
+     */
     const winningPatterns = [
         [0, 1, 2, 3, 4], 
         [5, 6, 7, 8, 9],
@@ -47,6 +57,10 @@ const Phrases = props => {
 
     const selectedIndexes = [MID_POSITION];
 
+    /**
+     * checkForWinner method is used to check for the winner based on the winning patterns defined above and 
+     * finally set the Winner State
+     */
     const checkForWinner = () => {
 
         winningPatterns.forEach(winningPattern => {
@@ -63,6 +77,10 @@ const Phrases = props => {
         });
     };
 
+    /**
+     * checkForBingo method is used to select the indexes and aggregate it so that winner can be checked
+     * @param {string} txt is used as a text which could be checked against the active(clicked) phrase
+     */
     const checkForBingo = txt => {
         const idx = phrasesToSend.findIndex(phrase => phrase === txt);
         selectedIndexes.push(idx);
@@ -92,5 +110,5 @@ const Phrases = props => {
         </div>
     );
 };
-
+/** returns the memoized phrases */
 export default memo(Phrases);

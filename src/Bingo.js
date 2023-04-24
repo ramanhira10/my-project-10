@@ -7,8 +7,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
+/** Winner context is created which has the data as a phrases */
 export let WinnerContext = createContext();
 
+/**
+ * Bingo Component is used to create the board and interaction for Bingo game
+ * phrases can be injected as a data
+ * Confetti will be shown once the winner is found
+ * Winner context is created to provide the winner related features
+ */
 const Bingo = () => {
   
   const phrases = data.phrases;
